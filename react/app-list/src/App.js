@@ -41,7 +41,7 @@ class App extends Component {
             <div className="col s12 m4 l4">parte utente
             </div>
             <div className="col s12 m8 l8">
-              <FriendList list={friendList}></FriendList>
+              <FriendList initialList={friendList}></FriendList>
             </div>
 
           </div>
