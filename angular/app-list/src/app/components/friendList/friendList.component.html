@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <ul id="friendsList" class="collection">
+    <li class="collection-item avatar" *ngFor="let item of list">
+      <i class="material-icons circle green">insert_chart</i>
+      <div class="row">
+        <div class="col s12">
+          <span class="title" *ngIf="item.gender === 'female'; else isMr">Mss</span>
+          <ng-template #isMr>
+            <span class="title">Mr</span>
+          </ng-template>
+          <span>{{item.name}}</span>
+          <span>{{item.lastName}}</span>
+          <p class="item-email">{{item.email}}</p>
+        </div>
+        <!-- <div class="col s4"> -->
+          <!-- <div class="item-age"><span>age: {{item.age}}</span></div> -->
+        <!-- </div> -->
+      </div>
+      <a href="#!" class="secondary-content" (click)="removeItem(item)">
+        <i class="material-icons">delete</i>
+      </a>
+
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,69 @@
+<a id="plusButton" (click)="openModal()" class="btn-floating btn-large waves-effect waves-light red btn modal-trigger" href="javacsript:void(0)">
+    <i class="material-icons">add</i>
+</a>
+
+<!-- Modal Structure -->
+<div id="modalAddFriend" class="modal">
+    <div class="modal-content">
+        <h4>Add new friend</h4>
+        <div class="row">
+            <form class="col s12" #friendForm="ngForm" (ngSubmit)="onSubmit(friendForm)">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" class="form-control no-margin" minlength="3" id="first_name" required [(ngModel)]="friend.name" name="name"
+                            #name="ngModel">
+                        <label for="first_name">*First Name</label>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                            <div *ngIf="name.errors.required">
+                                Name is required.
+                            </div>
+                            <div *ngIf="name.errors.minlength">
+                                Name must be at least 3 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" minlength="3" class="form-control no-margin" id="last_name" required [(ngModel)]="friend.lastName" name="lastName"
+                            #lastName="ngModel">
+                        <label for="last_name">*Last Name</label>
+                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                            <div *ngIf="lastName.errors.required">
+                                Last Name is required.
+                            </div>
+                            <div *ngIf="lastName.errors.minlength">
+                                Name must be at least 3 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-field">
+                            <input id="email" type="email" required class="form-control no-margin" [(ngModel)]="friend.email" name="email"
+                            #email="ngModel">
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                                <div *ngIf="email.errors.required">
+                                    email is required.
+                                </div>
+                            </div>
+                            <label for="email" data-error="wrong" data-success="right">*Email</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-field">
+                            <select class="form-control" id="gender" [(ngModel)]="friend.gender" name="gender">
+                                <option *ngFor="let item of genders" [value]="item">{{item}}</option>
+                            </select>
+                            <label for="gender">Gender</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="!friendForm.form.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
