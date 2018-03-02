@@ -1,31 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Friend } from './components/friend';
+import { AppService } from './app.service';
+
 
 @Component({
   selector: 'app-root',
+  providers: [AppService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  constructor(private appService: AppService) {
+
+  }
   title = 'app';
-  friendList: Friend[] = [{
-    name: "John",
-    lastName: "Doe",
-    age: 27,
-    email: "johndoecontact@testcontact.com",
-    gender: "male"
-  }, {
-    name: "Mario",
-    lastName: "Rossi",
-    age: 32,
-    email: "mariorossi@testcontact.com",
-    gender: "male"
-  }, {
-    name: "Lisa",
-    lastName: "Do3",
-    age: 30,
-    email: "lisadoe@testcontact.com",
-    gender: "female"
-  }];
+  friendList: Friend[] = [];
+
+  ngOnInit() {
+     this.appService.getFriends().subscribe(data => {
+      this.friendList = data.data;
+    });
+
+  }
+  
 }
