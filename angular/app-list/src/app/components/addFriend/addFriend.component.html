@@ -5,8 +5,8 @@
 <!-- Modal Structure -->
 <div id="modalAddFriend" class="modal">
     <div class="modal-content">
-        <h4>Add new friend</h4>
-        <div class="row">
+        <div class="row no-margin">
+            <h4>Add new friend</h4>
             <form class="col s12" #friendForm="ngForm" (ngSubmit)="onSubmit(friendForm)">
                 <div class="row">
                     <div class="input-field col s12">
@@ -41,8 +41,7 @@
                 <div class="row">
                     <div class="col s12">
                         <div class="input-field">
-                            <input id="email" type="email" required class="form-control no-margin" [(ngModel)]="friend.email" name="email"
-                            #email="ngModel">
+                            <input id="email" type="email" required class="form-control no-margin" [(ngModel)]="friend.email" name="email" #email="ngModel">
                             <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                                 <div *ngIf="email.errors.required">
                                     email is required.

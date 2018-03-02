@@ -16,3 +16,9 @@
 .alert-danger{
   color: #f21a1a;
 }
+
+#modalAddFriend h4{
+  font-weight: bold;
+  padding: 0 .75rem;
+  /* border-bottom: 1px solid gray; */
+}
