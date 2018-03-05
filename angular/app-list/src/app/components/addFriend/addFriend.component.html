@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="genderSelect" class="input-field">
-                                <select class="form-control" id="gender" [(ngModel)]="friend.gender" name="gender" (change)="genderChange()">
+                                <select class="form-control" id="gender" [(ngModel)]="friend.gender" name="gender">
                                     <option value="" disabled selected>Choose your option</option>
                                     <option *ngFor="let item of genders" [attr.data-icon]="getImagepath(item)" [value]="item">{{item}}</option>
                                 </select>

@@ -7,8 +7,13 @@ class FriendList extends Component {
     this.state = {
       list : props.initialList
     }
-
   }
+
+  /** Used to update values as soon as the parent updates values */
+  componentWillReceiveProps(change) {
+    this.setState({ list : change.initialList});
+}
+
   gender(el) {
     var result = (el === "male") ? <span>Mr</span> : <span>Ms</span>;
     return (result);

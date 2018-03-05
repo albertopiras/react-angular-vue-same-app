@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-
 import FriendList from './components/list/FriendList';
+import AddFriend from './components/addfriend/AddFriend';
+import axios from 'axios';
+
 
 class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      friendList: []
+    }
+    this.setState = this.setState.bind(this);
+  }
+
+  getFriendList() {
+    return axios.get('assets/friends.json');
+  }
+
+  componentDidMount() {
+    var self = this;
+    this.getFriendList().then(function (res) {
+      self.setState({ friendList: res.data.data });
+    });
+
+  };
+
   render() {
 
-    let friendList = [{
-      name: "John",
-      lastNane: "Doe",
-      age: 27,
-      email: "johndoecontact@testcontact.com",
-      gender: "male"
-    }, {
-      name: "Mario",
-      lastNane: "Rossi",
-      age: 32,
-      email: "mariorossi@testcontact.com",
-      gender: "male"
-    }, {
-      name: "Lisa",
-      lastNane: "Do3",
-      age: 30,
-      email: "lisadoe@testcontact.com",
-      gender: "female"
-    }];
     return (
       <div className="App">
         <header className="App-header">
@@ -37,15 +39,13 @@ class App extends Component {
         <div className="container">
 
           <div className="row">
-
             <div className="col s12 m4 l4">parte utente
             </div>
             <div className="col s12 m8 l8">
-              <FriendList initialList={friendList}></FriendList>
+              <FriendList initialList={this.state.friendList}></FriendList>
             </div>
-
           </div>
-
+          <AddFriend initialList={this.state.friendList}></AddFriend>
         </div>
 
       </div>
