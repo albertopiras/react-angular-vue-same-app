@@ -11,7 +11,7 @@ export class AppService {
 
     constructor(private http: HttpClient) { }
 
-    getFriends() {
+    getFriends():any {
         console.log('API CALL');
         return this.http.get('assets/friends.json');
     }
