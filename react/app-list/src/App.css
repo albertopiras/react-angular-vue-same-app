@@ -1,72 +1,81 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 200px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 200px;
+    padding: 20px;
+    color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
 /*customs*/
 
-.container{
-  margin-top: 3em;
-  width: 80%;
+.container {
+    margin-top: 3em;
+    width: 80%;
 }
 
-.collection-item{
-      text-align: left;
+.collection-item {
+    text-align: left;
 }
 
-.item-email{
-  padding-top: 10px;
+.item-email {
+    padding-top: 10px;
 }
 
 
 /* --------  Add Friend ---------- */
 
-
 #plusButton {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
 }
 
-.no-margin{
-  margin:  0 !important;
+.no-margin {
+    margin: 0 !important;
 }
 
-.modal-content h4{
-  text-transform: uppercase;
+.modal-content h4 {
+    text-transform: uppercase;
 }
 
-.alert-danger{
-  color: #f21a1a;
+.alert-danger {
+    color: #f21a1a;
 }
 
-#modalAddFriend h4{
-  font-weight: bold;
-  padding: 0 .75rem;
-  /* border-bottom: 1px solid gray; */
+#modalAddFriend h4 {
+    font-weight: bold;
+    padding: 0 .75rem;
+    /* border-bottom: 1px solid gray; */
+}
+
+.invalid-field {
+    border: 1px solid red !important;
+    outline-color: red !important;
+    outline-style: groove !important;
 }

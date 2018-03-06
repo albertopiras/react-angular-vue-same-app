@@ -7,14 +7,28 @@ class AddFriend extends Component {
     super();
     this.state = {
       list: props.initialList,
-      friendName: '',
-      friendLName: '',
-      friendEmail: '',
-      friendGender: '',
-      formErrors: { friendName: '', friendLName: '', friendEmail: '' },
-      isNameValid: false,
-      isLNameValid: false,
-      isEmailValid: false,
+      formInputs:{
+        friendName:{
+          value:'',
+          isValid:false,
+          errorMsg:''
+        },
+        friendLName:{
+          value:'',
+          isValid:false,
+          errorMsg:''
+        },
+        friendEmail:{
+          value:'',
+          isValid:false,
+          errorMsg:''
+        },
+        friendGender:{
+          value:'',
+          isValid:false,
+          errorMsg:''
+        }
+      },
       isFormValid: false
     }
 
@@ -23,17 +37,15 @@ class AddFriend extends Component {
 
   }
 
-
-
   handleSubmit(event) {
     event.preventDefault();
 
     let genderElement = document.querySelector('#genderSelect input.select-dropdown');
 
     let newFriend = {};
-    newFriend.name = this.state.friendName;
-    newFriend.lastNane = this.state.friendLName;
-    newFriend.email = this.state.friendEmail;
+    newFriend.name = this.state.formInputs.friendName.value;
+    newFriend.lastNane = this.state.formInputs.friendLName.value;
+    newFriend.email = this.state.formInputs.friendEmail.value;
     newFriend.gender = genderElement.value;
     newFriend.age = 31;
 
@@ -44,39 +56,56 @@ class AddFriend extends Component {
     let inputName = el.target.name;
     let inputValue = el.target.value;
 
-    this.setState({ [inputName]: inputValue }, this.validateField(inputName, inputValue));
+    let statusCopy = Object.assign({}, this.state);
+    statusCopy.formInputs[inputName].value = inputValue;
+
+    this.setState(statusCopy, this.validateField(inputName, inputValue));
   }
 
 
   validateField(fieldName, value) {
-    let fieldValidationErrors = this.state.formErrors;
 
-    let nameValid = this.state.isNameValid;
-    let emailValid = this.state.emailValid;
+    debugger;
+    let inputValid = this.state.formInputs[fieldName].isValid;
+    let errorMessage = '';
 
     switch (fieldName) {
       case 'friendName':
-        nameValid = value.length >= 3;
-        fieldValidationErrors[fieldName] = nameValid ? 'valido' : ' is too short';
+        inputValid = value.length >= 3;
+        errorMessage = inputValid ? '' : 'First name too short';
+        break;
+      case 'friendLName':
+        inputValid = value.length >= 3;
+        errorMessage = inputValid ? '' : 'Last name too short';
         break;
       case 'friendEmail':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors[fieldName] = emailValid ? '' : ' is invalid';
+        inputValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+        errorMessage = inputValid ? '' : ' is invalid';
         break;
       default:
         break;
     }
-    this.setState({
-      formErrors: fieldValidationErrors,
-      isNameValid: nameValid,
-      isEmailValid: emailValid
 
-    }, this.validateForm);
+    let statusCopy = Object.assign({}, this.state);
+    statusCopy.formInputs[fieldName].value = value;
+    statusCopy.formInputs[fieldName].isValid = inputValid;
+    statusCopy.formInputs[fieldName].errorMsg = errorMessage;
+
+    this.setState(statusCopy, this.validateForm);
 
   }
 
   validateForm() {
-    this.setState({ isFormValid: this.state.isNameValid && this.state.isEmailValid });
+
+    let formValid = true;
+    for (var item in this.formInputs){
+      if(!item.isValid){
+        formValid = false;
+        break;
+      }
+    }
+    
+    this.setState({ isFormValid: formValid });
   }
 
 
@@ -107,6 +136,13 @@ class AddFriend extends Component {
     return "./assets/img/" + path + ".png"
   }
 
+  // checkValidity(inputRef){
+
+  //   return (this.state[inputRef].length > 0 &&
+  //   debugger;
+  //   console.log('---->' + el);
+  // }
+
   render() {
     let genders = ['male', 'female'];
 
@@ -120,38 +156,34 @@ class AddFriend extends Component {
     /**  form error messages -Start  **/
     let nameError, lnameError, emailError = '';
 
+
+    // function getErrorTemplate(inputname){
+
+    // }
     // if there are errors in input - Name
-    if (!this.state.isNameValid) {
+    if (!this.state.formInputs['friendName'].isValid) {
       nameError =
-        <div class="alert alert-danger">
-          <div>{this.state.formErrors['friendName']}</div>
+        <div className="alert alert-danger">
+          <div>{this.state.formInputs['friendName'].errorMsg}</div>
         </div>
     }
 
-    // if there are errors in input - Name
-    if (!this.state.isNameValid) {
-      nameError =
-        <div class="alert alert-danger">
-          <div>{this.state.formErrors['friendName']}</div>
-        </div>
-    }
 
     // if there are errors in input - Name
-    if (!this.state.isLNameValid) {
+    if (!this.state.formInputs['friendLName'].isValid) {
       lnameError =
-        <div class="alert alert-danger">
-          <div>{this.state.formErrors['friendLName']}</div>
+        <div className="alert alert-danger">
+          <div>{this.state.formInputs['friendLName'].errorMsg}</div>
         </div>
     }
 
-    if (!this.state.isEmailValid) {
+    if (!this.state.formInputs['friendEmail'].isValid) {
       emailError =
-        <div class="alert alert-danger">
-          <div>{this.state.formErrors['friendEmail']}</div>
+        <div className="alert alert-danger">
+          <div>{this.state.formInputs['friendEmail'].errorMsg}</div>
         </div>
     }
     /**  form error messages - End **/
-
 
 
 
@@ -169,9 +201,10 @@ class AddFriend extends Component {
                 <div className="row">
                   <div className="input-field col s12">
                     <input type="text"
-                      onChange={this.handleChange} className="form-control no-margin" minLength="3" id="first_name" required name="friendName" />
+                      // onChange={this.handleChange} className={"form-control no-margin " + (this.checkValidity('friendName')) ? '' : 'invalid-field')} minLength="3" id="first_name" required name="friendName" />
+                      onChange={this.handleChange} className="form-control no-margin " minLength="3" id="first_name" required name="friendName" />
                     <label htmlFor="first_name">*First Name</label>
-                    {/* -{this.state.friendName} */}
+                    -{this.state.formInputs.friendName.value}-
                     {nameError}
                   </div>
                 </div>
