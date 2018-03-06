@@ -22,11 +22,6 @@ class AddFriend extends Component {
           value:'',
           isValid:false,
           errorMsg:''
-        },
-        friendGender:{
-          value:'',
-          isValid:false,
-          errorMsg:''
         }
       },
       isFormValid: false
@@ -64,12 +59,11 @@ class AddFriend extends Component {
 
 
   validateField(fieldName, value) {
-
-    debugger;
     let inputValid = this.state.formInputs[fieldName].isValid;
     let errorMessage = '';
 
     switch (fieldName) {
+
       case 'friendName':
         inputValid = value.length >= 3;
         errorMessage = inputValid ? '' : 'First name too short';
@@ -80,7 +74,7 @@ class AddFriend extends Component {
         break;
       case 'friendEmail':
         inputValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        errorMessage = inputValid ? '' : ' is invalid';
+        errorMessage = inputValid ? '' : 'Email is invalid';
         break;
       default:
         break;
@@ -96,10 +90,10 @@ class AddFriend extends Component {
   }
 
   validateForm() {
-
     let formValid = true;
-    for (var item in this.formInputs){
-      if(!item.isValid){
+    for (var item in this.state.formInputs){
+      // debugger;
+      if(!this.state.formInputs[item].isValid){
         formValid = false;
         break;
       }
@@ -136,12 +130,9 @@ class AddFriend extends Component {
     return "./assets/img/" + path + ".png"
   }
 
-  // checkValidity(inputRef){
-
-  //   return (this.state[inputRef].length > 0 &&
-  //   debugger;
-  //   console.log('---->' + el);
-  // }
+  checkValidity(inputRef){
+    return (!this.state.formInputs[inputRef].isValid && this.state.formInputs[inputRef].value !='' )? ' invalid-field':'';
+  }
 
   render() {
     let genders = ['male', 'female'];
@@ -201,16 +192,16 @@ class AddFriend extends Component {
                 <div className="row">
                   <div className="input-field col s12">
                     <input type="text"
-                      // onChange={this.handleChange} className={"form-control no-margin " + (this.checkValidity('friendName')) ? '' : 'invalid-field')} minLength="3" id="first_name" required name="friendName" />
-                      onChange={this.handleChange} className="form-control no-margin " minLength="3" id="first_name" required name="friendName" />
+                      onChange={this.handleChange} className={"form-control no-margin " + this.checkValidity('friendName')} minLength="3" id="first_name" required name="friendName" />
+                      {/* onChange={this.handleChange} className="form-control no-margin " minLength="3" id="first_name" required name="friendName" /> */}
                     <label htmlFor="first_name">*First Name</label>
-                    -{this.state.formInputs.friendName.value}-
+                    {/* -{this.state.formInputs.friendName.value}- */}
                     {nameError}
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s12">
-                    <input type="text" minLength="3" onChange={this.handleChange} className="form-control no-margin" id="last_name" required name="friendLName" />
+                    <input type="text" minLength="3" onChange={this.handleChange} className={"form-control no-margin " + this.checkValidity('friendLName')} id="last_name" required name="friendLName" />
                     <label htmlFor="last_name">*Last Name</label>
                     {lnameError}
                   </div>
@@ -218,7 +209,7 @@ class AddFriend extends Component {
                 <div className="row">
                   <div className="col s12">
                     <div className="input-field">
-                      <input id="email" type="email" required onChange={this.handleChange} className="form-control no-margin" name="friendEmail" />
+                      <input id="email" type="email" required onChange={this.handleChange} className={"form-control no-margin " + this.checkValidity('friendEmail')} name="friendEmail" />
                       <label htmlFor="email" data-error="wrong" data-success="right">*Email</label>
                       {emailError}
                     </div>
@@ -235,7 +226,7 @@ class AddFriend extends Component {
                     </div >
                   </div >
                 </div >
-                <button type="submit" className="btn btn-success">Submit</button>
+                <button type="submit" className="btn btn-success"  disabled={!this.state.isFormValid} >Submit</button>
               </form >
             </div >
           </div >
