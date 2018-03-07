@@ -20,6 +20,10 @@ class App extends Component {
     return axios.get('assets/friends.json');
   }
 
+  onChangeList(newlist){
+    this.setState({friendList: newlist});
+  }
+
   componentDidMount() {
     var self = this;
     this.getFriendList().then(function (res) {
@@ -42,10 +46,10 @@ class App extends Component {
             <div className="col s12 m4 l4">parte utente
             </div>
             <div className="col s12 m8 l8">
-              <FriendList initialList={this.state.friendList}></FriendList>
+              <FriendList initialList={this.state.friendList} changeParentList={this.onChangeList.bind(this)}></FriendList>
             </div>
           </div>
-          <AddFriend initialList={this.state.friendList}></AddFriend>
+          <AddFriend initialList={this.state.friendList} changeParentList={this.onChangeList.bind(this)}></AddFriend>
         </div>
 
       </div>

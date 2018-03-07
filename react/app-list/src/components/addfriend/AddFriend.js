@@ -7,21 +7,21 @@ class AddFriend extends Component {
     super();
     this.state = {
       list: props.initialList,
-      formInputs:{
-        friendName:{
-          value:'',
-          isValid:false,
-          errorMsg:''
+      formInputs: {
+        friendName: {
+          value: '',
+          isValid: false,
+          errorMsg: ''
         },
-        friendLName:{
-          value:'',
-          isValid:false,
-          errorMsg:''
+        friendLName: {
+          value: '',
+          isValid: false,
+          errorMsg: ''
         },
-        friendEmail:{
-          value:'',
-          isValid:false,
-          errorMsg:''
+        friendEmail: {
+          value: '',
+          isValid: false,
+          errorMsg: ''
         }
       },
       isFormValid: false
@@ -32,19 +32,31 @@ class AddFriend extends Component {
 
   }
 
+  componentWillReceiveProps(change) {
+    this.setState({ list: change.initialList });
+  }
+
+  updateList() {
+    this.props.changeParentList(this.state.list);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
-    let genderElement = document.querySelector('#genderSelect input.select-dropdown');
+    if (this.state.isFormValid) {
+      let genderElement = document.querySelector('#genderSelect input.select-dropdown');
+      let newFriend = {};
+      newFriend.name = this.state.formInputs.friendName.value;
+      newFriend.lastNane = this.state.formInputs.friendLName.value;
+      newFriend.email = this.state.formInputs.friendEmail.value;
+      newFriend.gender = genderElement.value;
+      newFriend.age = 31;
 
-    let newFriend = {};
-    newFriend.name = this.state.formInputs.friendName.value;
-    newFriend.lastNane = this.state.formInputs.friendLName.value;
-    newFriend.email = this.state.formInputs.friendEmail.value;
-    newFriend.gender = genderElement.value;
-    newFriend.age = 31;
+      this.setState({ list: this.state.list.push(newFriend) });
+      this.updateList();
+      $('#modalAddFriend').modal('close');
+    }
 
-    console.dir(newFriend);
   }
 
   handleChange(el) {
@@ -91,14 +103,13 @@ class AddFriend extends Component {
 
   validateForm() {
     let formValid = true;
-    for (var item in this.state.formInputs){
-      // debugger;
-      if(!this.state.formInputs[item].isValid){
+    for (var item in this.state.formInputs) {
+      if (!this.state.formInputs[item].isValid) {
         formValid = false;
         break;
       }
     }
-    
+
     this.setState({ isFormValid: formValid });
   }
 
@@ -130,8 +141,8 @@ class AddFriend extends Component {
     return "./assets/img/" + path + ".png"
   }
 
-  checkValidity(inputRef){
-    return (!this.state.formInputs[inputRef].isValid && this.state.formInputs[inputRef].value !='' )? ' invalid-field':'';
+  checkValidity(inputRef) {
+    return (!this.state.formInputs[inputRef].isValid && this.state.formInputs[inputRef].value != '') ? ' invalid-field' : '';
   }
 
   render() {
@@ -148,9 +159,6 @@ class AddFriend extends Component {
     let nameError, lnameError, emailError = '';
 
 
-    // function getErrorTemplate(inputname){
-
-    // }
     // if there are errors in input - Name
     if (!this.state.formInputs['friendName'].isValid) {
       nameError =
@@ -158,7 +166,6 @@ class AddFriend extends Component {
           <div>{this.state.formInputs['friendName'].errorMsg}</div>
         </div>
     }
-
 
     // if there are errors in input - Name
     if (!this.state.formInputs['friendLName'].isValid) {
@@ -168,6 +175,7 @@ class AddFriend extends Component {
         </div>
     }
 
+    // if there are errors in input - Email
     if (!this.state.formInputs['friendEmail'].isValid) {
       emailError =
         <div className="alert alert-danger">
@@ -175,10 +183,6 @@ class AddFriend extends Component {
         </div>
     }
     /**  form error messages - End **/
-
-
-
-    // console.log(this.props);
     return (
       <Fragment>
         <a id="plusButton" onClick={() => this.openModal()} className="btn-floating btn-large waves-effect waves-light red btn" href="javacsript:void(0)">
@@ -193,7 +197,7 @@ class AddFriend extends Component {
                   <div className="input-field col s12">
                     <input type="text"
                       onChange={this.handleChange} className={"form-control no-margin " + this.checkValidity('friendName')} minLength="3" id="first_name" required name="friendName" />
-                      {/* onChange={this.handleChange} className="form-control no-margin " minLength="3" id="first_name" required name="friendName" /> */}
+                    {/* onChange={this.handleChange} className="form-control no-margin " minLength="3" id="first_name" required name="friendName" /> */}
                     <label htmlFor="first_name">*First Name</label>
                     {/* -{this.state.formInputs.friendName.value}- */}
                     {nameError}
@@ -219,14 +223,14 @@ class AddFriend extends Component {
                   <div className="col s12">
                     <div id="genderSelect" className="input-field">
                       <select onChange={this.handleChange} className="form-control" id="gender" name="friendGender">
-                        <option defaultValue="" disabled selected>Choose your option</option>
+                        <option defaultValue="" disabled selected value="">Choose your option</option>
                         {selectOptions}
                       </select>
                       <label htmlFor="gender">Gender</label>
                     </div >
                   </div >
                 </div >
-                <button type="submit" className="btn btn-success"  disabled={!this.state.isFormValid} >Submit</button>
+                <button type="submit" className="btn btn-success" disabled={!this.state.isFormValid} >Submit</button>
               </form >
             </div >
           </div >
