@@ -106,6 +106,10 @@
     font-family: 'roboto';
 }
 
+.card-body i{
+  vertical-align: middle;
+}
+
 .card-info {
     color: #656565;
     margin-top: 0;

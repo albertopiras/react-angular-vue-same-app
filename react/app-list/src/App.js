@@ -52,8 +52,11 @@ class App extends Component {
                     My profile
                     </p>
                   <p className="card-user">
-                    User card
+                    My First Name
                     </p>
+                  <p><i class="material-icons">local_phone</i>3454654...</p>
+                  <p><i class="material-icons">mail</i> udaertestprofile@testemail.com</p>
+                  <p><i class="material-icons">link</i> www.usertestblog.com</p>
                 </div>
               </div>
             </div>
