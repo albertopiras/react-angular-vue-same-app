@@ -1,11 +1,14 @@
 
 <script>
   import FriendList from './FriendList';
-  
+  import AddFriend from './AddFriend';
+
+
   export default {
     name: 'HelloWorld',
     components: {
-      FriendList
+      FriendList,
+      AddFriend
     },
     data() {
       return {
@@ -56,6 +59,7 @@
         <FriendList name="FriendList" v-bind:list="friendList"></FriendList>
       </div>
     </div>
+        <AddFriend v-bind:list="friendList"></AddFriend>
   </div>
 </template>
 
