@@ -42,25 +42,22 @@ class App extends Component {
         </header>
         <div className="container">
           <div className="row">
-            <div className="col s12 m4 l4">
+            <div className="col s12 m12 l4">
               <div className="card">
                 <div className="card-header">
                   <img src='https://placeimg.com/100/100/people' className="" alt="logo" />
                 </div>
                 <div className="card-body">
-                  <p className="card-info">
-                    My profile
-                    </p>
                   <p className="card-user">
                     My First Name
                     </p>
-                  <p><i class="material-icons">local_phone</i>3454654...</p>
-                  <p><i class="material-icons">mail</i> udaertestprofile@testemail.com</p>
-                  <p><i class="material-icons">link</i> www.usertestblog.com</p>
+                  <p><i class="material-icons">local_phone</i>&#32;&#32;345 - 4654...</p>
+                  <p><i class="material-icons">mail</i>&#32;&#32;userprofile@testemail.com</p>
+                  <p><i class="material-icons">link</i>&#32;&#32;www.usertestblog.com</p>
                 </div>
               </div>
             </div>
-            <div className="col s12 m8 l8">
+            <div className="col s12 m12 l8">
               <FriendList initialList={this.state.friendList} changeParentList={this.onChangeList.bind(this)}></FriendList>
             </div>
           </div>
