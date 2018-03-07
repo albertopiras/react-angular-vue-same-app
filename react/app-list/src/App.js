@@ -20,8 +20,8 @@ class App extends Component {
     return axios.get('assets/friends.json');
   }
 
-  onChangeList(newlist){
-    this.setState({friendList: newlist});
+  onChangeList(newlist) {
+    this.setState({ friendList: newlist });
   }
 
   componentDidMount() {
@@ -41,9 +41,21 @@ class App extends Component {
           <h1 className="App-title">Friends Application - React</h1>
         </header>
         <div className="container">
-
           <div className="row">
-            <div className="col s12 m4 l4">parte utente
+            <div className="col s12 m4 l4">
+              <div className="card">
+                <div className="card-header">
+                  <img src='https://placeimg.com/100/100/people' className="" alt="logo" />
+                </div>
+                <div className="card-body">
+                  <p className="card-info">
+                    My profile
+                    </p>
+                  <p className="card-user">
+                    User card
+                    </p>
+                </div>
+              </div>
             </div>
             <div className="col s12 m8 l8">
               <FriendList initialList={this.state.friendList} changeParentList={this.onChangeList.bind(this)}></FriendList>

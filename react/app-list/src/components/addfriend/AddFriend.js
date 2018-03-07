@@ -133,7 +133,6 @@ class AddFriend extends Component {
   }
 
   openModal() {
-    console.log('modal open');
     $('#modalAddFriend').modal('open');
   }
 

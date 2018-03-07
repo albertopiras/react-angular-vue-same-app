@@ -79,3 +79,41 @@
     outline-color: red !important;
     outline-style: groove !important;
 }
+
+
+/* card */
+
+.card-header {
+    background: #e4e4e4;
+    text-align: center;
+    padding-top: 1em;
+    border-bottom: 1.5px solid #a0a0a094;
+}
+
+.card-header img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: -40px;
+  padding: 3px;
+  background: white;
+  border-radius: 50%;
+  border: 1.5px solid #c7c7c7;
+  border-style: solid;
+}
+
+.card-body {
+    padding: 3rem 1rem 3rem 1rem;
+    font-family: 'roboto';
+}
+
+.card-info {
+    color: #656565;
+    margin-top: 0;
+}
+
+.card-user {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
