@@ -5,12 +5,26 @@
   </header>
   <div class="container">
     <div class="row">
-      <div class="col s12 m4 l4">parte utente
+      <div class="col s12 m12 l4">  
+        <div class="card">
+          <div class="card-header">
+            <img src='https://placeimg.com/100/100/people' class="" alt="logo" />
+          </div>
+          <div class="card-body">
+            <p class="card-user">
+              My First Name
+            </p>
+            <p><i class="material-icons">local_phone</i>&#32;&#32;345 - 4654...</p>
+            <p><i class="material-icons">mail</i>&#32;&#32;userprofile@testemail.com</p>
+            <p><i class="material-icons">link</i>&#32;&#32;www.usertestblog.com</p>
+          </div>
+        </div>
       </div>
-      <div class="col s12 m8 l8">
+      <div class="col s12 m12 l8">
         <friend-list [list]="friendList"></friend-list>
       </div>
     </div>
     <add-friend [list]="friendList"></add-friend>
   </div>
 </div>
+

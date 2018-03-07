@@ -1,0 +1,15 @@
+
+/*customs*/
+
+.container {
+    margin-top: 3em;
+    width: 80%;
+}
+
+.collection-item {
+    text-align: left;
+}
+
+.item-email {
+    padding-top: 10px;
+}
