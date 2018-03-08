@@ -5,6 +5,11 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
+  globals: {
+    "$": true,
+    "jQuery": true,
+    "Materialize":true
+  },
   env: {
     browser: true,
   },
