@@ -2,8 +2,8 @@
 <script>
   import FriendList from './FriendList';
   import AddFriend from './AddFriend';
-
-
+  import axios from 'axios';
+  
   export default {
     name: 'App',
     components: {
@@ -14,26 +14,35 @@
       return {
         msg: 'Welcome to Your Vue.js App',
         friendList: [{
-          name: "John",
-          lastNane: "Doe",
-          age: 27,
-          email: "johndoecontact@testcontact.com",
-          gender: "male"
-        }, {
-          name: "Mario",
-          lastNane: "Rossi",
-          age: 32,
-          email: "mariorossi@testcontact.com",
-          gender: "male"
-        }, {
-          name: "Lisa",
-          lastNane: "Do3",
-          age: 30,
-          email: "lisadoe@testcontact.com",
-          gender: "female"
-        }]
+            "name": "John",
+            "lastName": "Doe",
+            "age": 27,
+            "email": "johndoecontact@testcontact.com",
+            "gender": "male"
+          },
+          {
+            "name": "Mario",
+            "lastName": "Rossi",
+            "age": 32,
+            "email": "mariorossi@testcontact.com",
+            "gender": "male"
+          },
+          {
+            "name": "Lisa",
+            "lastName": "Do3",
+            "age": 30,
+            "email": "lisadoe@testcontact.com",
+            "gender": "female"
+          }
+        ]
       }
-    }
+    },
+    mounted() {
+      var self = this;
+      axios.get('assets/friends.json').then(function(res) {
+        self.friendList = res.data.data
+      })
+    },
   }
 </script>
 
@@ -59,7 +68,7 @@
         <FriendList name="FriendList" v-bind:list="friendList"></FriendList>
       </div>
     </div>
-        <AddFriend v-bind:list="friendList"></AddFriend>
+    <AddFriend v-bind:list="friendList"></AddFriend>
   </div>
 </template>
 

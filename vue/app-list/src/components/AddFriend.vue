@@ -54,9 +54,6 @@
         this.emailError = this.emailValid ? '' : 'Email is invalid';
       },
     },
-    getImagepath(path) {
-      return "../assets/img/" + path + ".png"
-    },
     mounted() {
       $('#modalAddFriend').modal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal

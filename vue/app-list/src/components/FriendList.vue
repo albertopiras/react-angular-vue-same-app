@@ -4,8 +4,8 @@
     props: ["list"],
     methods: {
       removeItem: function(el) {
-        console.log(el);
-        console.log(this.list.indexOf(el));
+        // console.log(el);
+        // console.log(this.list.indexOf(el));
         if (this.list.indexOf(el) > -1) {
           this.list.splice(this.list.indexOf(el), 1)
         }
