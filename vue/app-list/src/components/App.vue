@@ -5,7 +5,7 @@
 
 
   export default {
-    name: 'HelloWorld',
+    name: 'App',
     components: {
       FriendList,
       AddFriend

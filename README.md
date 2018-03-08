@@ -4,7 +4,7 @@ The same App build with React, Vue.
 
 
 
-## Use Vue App:
+## Use Vue App  (v 2.x):
 
 cd vue/app-list/
 
@@ -12,7 +12,7 @@ npm start
 
 visit  --> localhost:8080
 
-## Use React App:
+## Use React App (v 16.x):
 
 cd react/app-list/
 
@@ -21,7 +21,7 @@ npm start
 visit  --> localhost:8080
 
 
-## Use Angular App:
+## Use Angular App (v 5.x):
 
 cd angular/app-list/
 

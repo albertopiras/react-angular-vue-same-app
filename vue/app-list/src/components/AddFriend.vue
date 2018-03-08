@@ -119,9 +119,9 @@
               <div class="col s12">
                 <div id="genderSelect" class="input-field">
                   <select class="form-control" id="gender" v-model="gender" name="gender">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option v-for="item in genders" :data-icon="item + '.png'" >{{item}}</option>
-                      </select>
+                              <option value="" disabled selected>Choose your option</option>
+                              <option v-for="item in genders" :data-icon="'./assets/'+item + '.png'" >{{item}}</option>
+                            </select>
                   <label for="gender">Gender</label>
                 </div>
               </div>
