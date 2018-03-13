@@ -2,30 +2,11 @@
 
 The same App built with React, Angular, Vue.
 
-Online Demo Angular ->  [angular demo]
+Angular Online Demo  ->  [angular demo]
 
-Online Demo React ->  [react demo]
+React Online Demo  ->  [react demo]
 
-Online Demo React ->  [vue demo]
-
-
-## Use Vue App  (v 2.x):
-
-cd vue/app-list/
-
-`npm start`
-
-visit  --> localhost:8080
-
-### Build
-
-update the file app/config/index.js
-
-assetsPublicPath: './'
-
-`npm run build`
-
-then use dist folder
+Vue Online Demo  ->  [vue demo]
 
 
 ## Use React App (v 16.x):
@@ -66,6 +47,26 @@ anglular-cli.json file
       "port": 8080
     }
   }
+
+
+## Use Vue App  (v 2.x):
+
+cd vue/app-list/
+
+`npm start`
+
+visit  --> localhost:8080
+
+### Build
+
+update the file app/config/index.js
+
+assetsPublicPath: './'
+
+`npm run build`
+
+then use dist folder
+
 
 [angular demo]: <https://albertopiras.github.io/react-angular-vue-same-app/angular/app-list/dist/>
 [react demo]: <https://albertopiras.github.io/react-angular-vue-same-app/react/app-list/build/>
