@@ -1,0 +1,25 @@
+{
+    "data": [
+        {
+            "name": "John",
+            "lastName": "Doe",
+            "age": 27,
+            "email": "johndoecontact@testcontact.com",
+            "gender": "male"
+        },
+        {
+            "name": "Mario",
+            "lastName": "Rossi",
+            "age": 32,
+            "email": "mariorossi@testcontact.com",
+            "gender": "male"
+        },
+        {
+            "name": "Lisa",
+            "lastName": "Do3",
+            "age": 30,
+            "email": "lisadoe@testcontact.com",
+            "gender": "female"
+        }
+    ]
+}
