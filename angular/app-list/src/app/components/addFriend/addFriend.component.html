@@ -42,10 +42,14 @@
                     <div class="row">
                         <div class="col s12">
                             <div class="input-field">
-                                <input id="email" type="email" required class="form-control no-margin" [(ngModel)]="friend.email" name="email" #email="ngModel">
-                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                                <input id="email" type="email" required class="form-control no-margin" [(ngModel)]="friend.email" name="email" #email="ngModel"
+                                 email >
+                                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                                     <div *ngIf="email.errors.required">
                                         email is required.
+                                    </div>
+                                    <div *ngIf="email.hasError('email')">
+                                        Invalid email
                                     </div>
                                 </div>
                                 <label for="email" data-error="wrong" data-success="right">*Email</label>
