@@ -1,7 +1,6 @@
 # Friend list App.
 
-The same App build with React, Vue.
-
+The same App built with React, Angular, Vue.
 
 
 ## Use Vue App  (v 2.x):
@@ -29,7 +28,9 @@ npm start
 
 visit  --> localhost:8080
 
+build:  ng build --base-href=./
 
+----------------
 anglular-cli.json file
 "defaults": {
     "serve": {
