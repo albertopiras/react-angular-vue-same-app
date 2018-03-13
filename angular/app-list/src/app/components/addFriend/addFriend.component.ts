@@ -27,7 +27,7 @@ export class AddFriend implements OnInit {
     }
 
     getImagepath(path) {
-        return "../assets/img/" + path + ".png"
+        return "./assets/img/" + path + ".png"
     }
 
     onSubmit(form) {

@@ -28,7 +28,9 @@ npm start
 
 visit  --> localhost:8080
 
+build:  ng build --base-href=./
 
+----------------
 anglular-cli.json file
 "defaults": {
     "serve": {
