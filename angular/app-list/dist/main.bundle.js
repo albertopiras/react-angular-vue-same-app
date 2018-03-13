@@ -209,7 +209,7 @@ var AddFriend = /** @class */ (function () {
         this.list.push(newFriend);
     };
     AddFriend.prototype.getImagepath = function (path) {
-        return "../assets/img/" + path + ".png";
+        return "./assets/img/" + path + ".png";
     };
     AddFriend.prototype.onSubmit = function (form) {
         this.createFriend();
