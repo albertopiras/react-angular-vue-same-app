@@ -1,4 +1,4 @@
-/*global $, Materialize*/
+/*global $*/
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
@@ -141,7 +141,7 @@ class AddFriend extends Component {
   }
 
   checkValidity(inputRef) {
-    return (!this.state.formInputs[inputRef].isValid && this.state.formInputs[inputRef].value != '') ? ' invalid-field' : '';
+    return (!this.state.formInputs[inputRef].isValid && this.state.formInputs[inputRef].value !== '') ? ' invalid-field' : '';
   }
 
   render() {
