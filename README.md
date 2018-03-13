@@ -4,6 +4,9 @@ The same App built with React, Angular, Vue.
 
 Online Demo Angular version ->  [angular demo]
 
+Online Demo React version ->  [react demo]
+
+
 
 ## Use Vue App  (v 2.x):
 
@@ -21,6 +24,12 @@ npm start
 
 visit  --> localhost:8080
 
+### Build
+
+specify   "homepage" into the package.json file:
+
+"homepage": "./"
+
 
 ## Use Angular App (v 5.x):
 
@@ -30,7 +39,9 @@ npm start
 
 visit  --> localhost:8080
 
-build:  ng build --base-href=./
+### Build
+
+ng build --base-href=./
 
 ----------------
 anglular-cli.json file
@@ -41,4 +52,5 @@ anglular-cli.json file
   }
 
 [angular demo]: <https://albertopiras.github.io/react-angular-vue-same-app/angular/app-list/dist/>
+[react demo]: <https://albertopiras.github.io/react-angular-vue-same-app/react/app-list/build/>
 
